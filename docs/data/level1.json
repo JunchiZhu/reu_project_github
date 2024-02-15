@@ -1,0 +1,110 @@
+[
+  {
+    "Team Members": "Project Manager(You)",
+    "Project Manager(You)": 0,
+    "Architect": 4,
+    "Owner": 5,
+    "Site Supervisor": 1,
+    "Project Engineer": 5,
+    "Landscaper": 2,
+    "Supplier": 2,
+    "Laborers/ Tradesmen": 2,
+    "Estimator": 1
+  },
+  {
+    "Team Members": "Architect",
+    "Project Manager(You)": 4,
+    "Architect": 0,
+    "Owner": 1,
+    "Site Supervisor": 3,
+    "Project Engineer": 2,
+    "Landscaper": 4,
+    "Supplier": 1,
+    "Laborers/ Tradesmen": 1,
+    "Estimator": 4
+  },
+  {
+    "Team Members": "Owner",
+    "Project Manager(You)": 5,
+    "Architect": 1,
+    "Owner": 0,
+    "Site Supervisor": 5,
+    "Project Engineer": 5,
+    "Landscaper": 4,
+    "Supplier": 4,
+    "Laborers/ Tradesmen": 4,
+    "Estimator": 3
+  },
+  {
+    "Team Members": "Site Supervisor",
+    "Project Manager(You)": 1,
+    "Architect": 3,
+    "Owner": 5,
+    "Site Supervisor": 0,
+    "Project Engineer": 5,
+    "Landscaper": 1,
+    "Supplier": 2,
+    "Laborers/ Tradesmen": 1,
+    "Estimator": 2
+  },
+  {
+    "Team Members": "Project Engineer",
+    "Project Manager(You)": 5,
+    "Architect": 2,
+    "Owner": 5,
+    "Site Supervisor": 5,
+    "Project Engineer": 0,
+    "Landscaper": 3,
+    "Supplier": 5,
+    "Laborers/ Tradesmen": 1,
+    "Estimator": 1
+  },
+  {
+    "Team Members": "Landscaper",
+    "Project Manager(You)": 2,
+    "Architect": 4,
+    "Owner": 4,
+    "Site Supervisor": 1,
+    "Project Engineer": 3,
+    "Landscaper": 0,
+    "Supplier": 1,
+    "Laborers/ Tradesmen": 1,
+    "Estimator": 2
+  },
+  {
+    "Team Members": "Supplier",
+    "Project Manager(You)": 2,
+    "Architect": 1,
+    "Owner": 4,
+    "Site Supervisor": 2,
+    "Project Engineer": 5,
+    "Landscaper": 1,
+    "Supplier": 0,
+    "Laborers/ Tradesmen": 5,
+    "Estimator": 3
+  },
+  {
+    "Team Members": "Laborers/ Tradesmen",
+    "Project Manager(You)": 2,
+    "Architect": 1,
+    "Owner": 4,
+    "Site Supervisor": 1,
+    "Project Engineer": 1,
+    "Landscaper": 1,
+    "Supplier": 5,
+    "Laborers/ Tradesmen": 0,
+    "Estimator": 4
+  },
+  {
+    "Team Members": "Estimator",
+    "Project Manager(You)": 1,
+    "Architect": 4,
+    "Owner": 3,
+    "Site Supervisor": 2,
+    "Project Engineer": 1,
+    "Landscaper": 2,
+    "Supplier": 3,
+    "Laborers/ Tradesmen": 4,
+    "Estimator": 0
+  }
+]

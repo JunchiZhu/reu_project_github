@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correlation Table and Quiz</title>
+    <link rel="stylesheet" href="css/correlation.css">
+</head>
+<body>
+<h1>Correlation Table</h1>
+<table id="correlationTable"></table>
+
+<h2>Quiz</h2>
+<form id="quizForm">
+    <label>Name: <input type="text" name="name" required></label><br>
+    <label>Email: <input type="email" name="email" required></label><br>
+    <p>Question 1: <input type="text" name="question1" required></p>
+    <p>Question 2: <input type="text" name="question2" required></p>
+    <button type="submit" onclick="SubForm">Submit Answers</button>
+</form>
+<div id="quizWarning" style="color: red; display: none;"></div>
+
+<button id="goBackButton">Go Back to Selection</button>
+<button id="goToGraphPageButton">Go to Graph Page</button>
+
+<script src="js/correlation.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script>
+    function SubForm(event){
+        event.preventDefault();
+        $.ajax({
+            url:"https://api.apispreadsheets.com/data/vUbbx1vPXTx2rF5w/",
+            type:"post",
+            data:$("#quizForm").serializeArray(),
+            success: function(){
+                alert("Form Data Submitted :)");
+            },
+            error: function(){
+                alert("There was an error :(");
+            }
+        });
+    }
+</script>
+</body>
+</html>
+

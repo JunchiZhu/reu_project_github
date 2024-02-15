@@ -1,0 +1,82 @@
+[
+  {
+    "Team Members": "Architect",
+    "Brief Description": "Responsible for the building designs, drafts project blueprints, and answers requests for information for contractors. Works with Project Manager and Owner."
+  },
+  {
+    "Team Members": "Owner",
+    "Brief Description": "The owner of a construction project. Responsible of major decisions in projects and pays for the work to be done. Some owners can have a larger impact on a project, while other owners are more hands off"
+  },
+  {
+    "Team Members": "Investors",
+    "Brief Description": "A person or group who invests capital in a construction project. Very common in massive projects."
+  },
+  {
+    "Team Members": "Safety Inspectors",
+    "Brief Description": "Responsible for inspecting construction sites for safety violations and investigating project sites if an accident occurs. Has the power to fine contractors for safety violations."
+  },
+  {
+    "Team Members": "Interior Designer",
+    "Brief Description": "Ensures that the building interior is safe, comfortable, and practical. Helps with choosing decorations and indoor amenities for a house."
+  },
+  {
+    "Team Members": "Site Supervisor",
+    "Brief Description": "Responsible for day-to-day construction operations. Supervises the general trades and insures that the project is running safely."
+  },
+  {
+    "Team Members": "Project Engineer",
+    "Brief Description": "Responsible for project administration. Oversees submittals, change orders, and requests for information. Works with Project Manager and Site Supervisor."
+  },
+  {
+    "Team Members": "Landscaper",
+    "Brief Description": "Responsible for exterior improvements for a house or building. Creates lawns and gardens for houses. Can be hired for lawn maintenance."
+  },
+  {
+    "Team Members": "General Foreman",
+    "Brief Description": "Monitors site labor for specific trades. Often ensures that their specific trades are using safe procedures during the construction process. Often reports to Site Supervisor. More common in larger projects."
+  },
+  {
+    "Team Members": "Supplier",
+    "Brief Description": "Provides construction materials and equipment for a construction project."
+  },
+  {
+    "Team Members": "Lawyer",
+    "Brief Description": "Responsible for overseeing all legal actions in a construction project. Has the ability to review contracts between contractors and owners."
+  },
+  {
+    "Team Members": "Equipment Operator",
+    "Brief Description": "A person who is responsible to safely handle and operate construction machinery. Construction equipment can range in size and may need certifications to operate."
+  },
+  {
+    "Team Members": "Laborers/Tradesmen",
+    "Brief Description": "Responsible for general labor throughout the project. Specialized tradesmen can have expertise in certain fields."
+  },
+  {
+    "Team Members": "Realitor",
+    "Brief Description": "Responsible for marketing and selling a residential home to potential homebuyers. They can also track housing market trends in the region."
+  },
+  {
+    "Team Members": "Field Engineer",
+    "Brief Description": "Similar role to the project engineer. More common in larger projects where multiple project engineers are needed;."
+  },
+  {
+    "Team Members": "BIM Engineer",
+    "Brief Description": "Responsible for ensuring quality control with Building Information Modeling. Utilized in larger and complicates projects"
+  },
+  {
+    "Team Members": "Structural Engineer",
+    "Brief Description": "Ensures that a building is structurally sound. Critical in infrastructure and bridge construction."
+  },
+  {
+    "Team Members": "LEED Professional",
+    "Brief Description": "Actively works in all phases of construction in making a building more environmentally friendly, or 'green'. Reviews materials and construction methods to improve environmental impact. Common in larger projects."
+  },
+  {
+    "Team Members": "Utility Expert",
+    "Brief Description": "Connects a building to utilities which include water, electricity, gas, sewer, and phone lines."
+  },
+  {
+    "Team Members": "Estimator",
+    "Brief Description": "Responsible for giving an estimate on project costs. This includes material, labor, and equipments costs."
+  }
+]

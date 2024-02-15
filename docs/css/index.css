@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#membersContainer {
+    margin-top: 20px;
+}
+
+/* Style for the label to position the tooltip */
+label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer; /* Optional: indicates hoverable */
+}
+
+/* Hidden tooltip text */
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Optional: Adds a little arrow at the top of the tooltip */
+    ::after {
+        content: "";
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: red transparent transparent transparent;
+    }
+}
+
+/* Show the tooltip text when hovering over the label */
+label:hover .tooltip-text {
+    visibility: visible;
+}
+
