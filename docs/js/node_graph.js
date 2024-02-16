@@ -24,37 +24,37 @@ function createNodeGraph(data, selectedMembers) {
 
     const projectManager = 'Project Manager(You)'; // Assume the project manager has a specific key
 
-    selectedMembers.forEach(member => {
-        if (member !== projectManager) {
-            const sourceData = data.find(d => d['Team Members'] === projectManager);
-            const value = sourceData[member];
-            if (value && value !== 0) { // Ensure there is a connection and it's not to self
-                links.push({ source: projectManager, target: member, value });
-            }
-        }
-    });
-    // selectedMembers.forEach((source, i) => {
-    //     selectedMembers.slice(i + 1).forEach(target => {
-    //         // Only create an edge if source is less than target to avoid duplicates
-    //         const sourceData = data.find(d => d['Team Members'] === source);
-    //         const value = sourceData[target];
-    //         if (value) {
-    //             links.push({ source, target, value });
+    // selectedMembers.forEach(member => {
+    //     if (member !== projectManager) {
+    //         const sourceData = data.find(d => d['Team Members'] === projectManager);
+    //         const value = sourceData[member];
+    //         if (value && value !== 0) { // Ensure there is a connection and it's not to self
+    //             links.push({ source: projectManager, target: member, value });
     //         }
-    //     });
+    //     }
     // });
+    selectedMembers.forEach((source, i) => {
+        selectedMembers.slice(i + 1).forEach(target => {
+            // Only create an edge if source is less than target to avoid duplicates
+            const sourceData = data.find(d => d['Team Members'] === source);
+            const value = sourceData[target];
+            if (value) {
+                links.push({ source, target, value });
+            }
+        });
+    });
 
 
     const simulation = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).id(d => d.id).distance(200)) // Increase distance to spread out nodes
-        .force('charge', d3.forceManyBody().strength(-500)) // Increase repulsion strength
+        .force('link', d3.forceLink(links).id(d => d.id).distance(200))
+        .force('charge', d3.forceManyBody().strength(-500))
         .force('center', d3.forceCenter(width / 2, height / 2));
 
     const link = svg.append('g')
         .selectAll('line')
         .data(links)
         .join('line')
-        .style('stroke-width', d => d.value) // Adjust thickness based on value
+        .style('stroke-width', d => d.value)
         .style('stroke', '#999');
 
     const linkText = svg.append('g')
@@ -69,7 +69,7 @@ function createNodeGraph(data, selectedMembers) {
         .selectAll('circle')
         .data(nodes)
         .join('circle')
-        .attr('r', 20) // Adjust node size as needed
+        .attr('r', 20)
         .style('fill', '#69b3a2')
         .call(drag(simulation));
     function drag(simulation) {
@@ -95,7 +95,7 @@ function createNodeGraph(data, selectedMembers) {
             .on('drag', dragged)
             .on('end', dragended);
     }
-    // Label each node with its id
+
     const nodeText = svg.append('g')
         .selectAll('text')
         .data(nodes)
