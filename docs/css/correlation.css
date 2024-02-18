@@ -25,3 +25,36 @@
 #correlationTable tbody tr:hover {
     background-color: #ddd;
 }
+
+button#table_quiz_button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px; /* Larger font size for better readability */
+    transition: background-color 0.3s ease; /* Transition for a hover effect */
+}
+
+button#table_quiz_button:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+}
+
+
+button#goBackButton {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px; /* Larger font size for better readability */
+    transition: background-color 0.3s ease; /* Transition for a hover effect */
+}
+
+button#goBackButton:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+}
