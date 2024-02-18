@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+
     document.getElementById('goBackButton').addEventListener('click', handleGoBack);
 
 });

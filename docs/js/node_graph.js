@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
             createNodeGraph(data, selectedMembers);
         })
         .catch(error => console.error("Error loading the data:", error));
+
+    const user = localStorage.getItem('userName');
+    const email = localStorage.getItem('userEmail');
+    // console.log(user, email);
+
 });
 
 function createNodeGraph(data, selectedMembers) {
@@ -148,22 +153,22 @@ function createNodeGraph(data, selectedMembers) {
 
         var allFieldsFilled = true;
 
-        var nameInput = document.querySelector('#graph_quizForm input[name="name"]');
-        var emailInput = document.querySelector('#graph_quizForm input[name="email"]');
-
-        if (!nameInput.value.trim()) {
-            allFieldsFilled = false;
-            nameInput.style.borderColor = 'red';
-        } else {
-            nameInput.style.borderColor = '';
-        }
-
-        if (!emailInput.value.trim()) {
-            allFieldsFilled = false;
-            emailInput.style.borderColor = 'red';
-        } else {
-            emailInput.style.borderColor = '';
-        }
+        // var nameInput = document.querySelector('#graph_quizForm input[name="name"]');
+        // var emailInput = document.querySelector('#graph_quizForm input[name="email"]');
+        //
+        // if (!nameInput.value.trim()) {
+        //     allFieldsFilled = false;
+        //     nameInput.style.borderColor = 'red';
+        // } else {
+        //     nameInput.style.borderColor = '';
+        // }
+        //
+        // if (!emailInput.value.trim()) {
+        //     allFieldsFilled = false;
+        //     emailInput.style.borderColor = 'red';
+        // } else {
+        //     emailInput.style.borderColor = '';
+        // }
 
         document.querySelectorAll('#graph_quizForm select[required]').forEach(function(select) {
             if (select.value === "") {

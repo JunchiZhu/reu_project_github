@@ -10,12 +10,11 @@
 <h1>Table</h1>
 <table id="correlationTable"></table>
 
-
-<h2>Quiz</h2>
+<h2>Please read and complete</h2>
 <form id="quizForm">
 
-    <label>Name: <input type="text" name="name" required></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
+    <label>Name: <input id="username_input" type="text" name="name" required></label><br>
+    <label>Email: <input id="user_email_input" type="email" name="email" required></label><br>
 
     <p>The number in the table denotes the frequency of communication between the two stakeholders across the column and row. Please read the table and answer the following questions: </p>
     <p>Who is the central stakeholder in the project communication?</p>
@@ -64,17 +63,19 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
 <script>
-
     function SubForm() {
         const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers')) || [];
         const selectedMembersString = selectedMembers.join(", ");
+        const username = document.getElementById('username_input').value;
+        const email = document.getElementById('user_email_input').value;
+        localStorage.setItem('userName', username)
+        localStorage.setItem('userEmail', email);
 
-        // Serialize form data and add the selected_members data
         var formData = $("#quizForm").serializeArray();
         formData.push({ name: 'selected_members', value: selectedMembersString });
 
         $.ajax({
-            url:"https://api.apispreadsheets.com/data/JPe41RBXjnIShTXZ/",
+            url:"https://api.apispreadsheets.com/data/FDFcSAxzcSG2vv1F/",
             type: "post",
             data: formData,
             success: function() {

@@ -8,15 +8,15 @@
 </head>
 <body>
 <h1>Node Graph</h1>
-<!--<div id="nodeGraph"></div>-->
+
 <div id="nodeGraph" style="position: relative;"></div>
 
 
-<h2>Quiz</h2>
+<h2>Please read and complete</h2>
 
 <form id="graph_quizForm">
-    <label>Name: <input type="text" name="name" required></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
+<!--    <label>Name: <input type="text" name="name" required></label><br>-->
+<!--    <label>Email: <input type="email" name="email" required></label><br>-->
 
     <p>In the figure above, dots indicate stakeholders (people) and lines indicate information exchanges between people. Please read the figure and answer the following questions: </p>
     <p>Who is the central stakeholder in the project communication?</p>
@@ -70,12 +70,15 @@
         const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers')) || [];
         const selectedMembersString = selectedMembers.join(", ");
 
-        // Serialize form data and add the selected_members data
         var formData = $("#graph_quizForm").serializeArray();
         formData.push({ name: 'selected_members', value: selectedMembersString });
+        const user = localStorage.getItem('userName');
+        const email = localStorage.getItem('userEmail');
+        formData.push({ name: 'name', value: user });
+        formData.push({ name: 'email', value: email });
 
         $.ajax({
-            url:"https://api.apispreadsheets.com/data/VkWTUZm5vTdd2vtG/",
+            url:"https://api.apispreadsheets.com/data/9H04jFGdN6d73mEY/",
             type: "post",
             data: formData,
             success: function() {
