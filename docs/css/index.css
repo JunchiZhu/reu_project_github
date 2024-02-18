@@ -1,24 +1,196 @@
+/*!*body {*!*/
+/*!*    font-family: Arial, sans-serif;*!*/
+/*!*    margin: 0;*!*/
+/*!*    padding: 20px;*!*/
+/*!*    box-sizing: border-box;*!*/
+/*!*    display: flex;*!*/
+/*!*    flex-direction: column;*!*/
+/*!*    align-items: center;*!*/
+/*!*    justify-content: center;*!*/
+/*!*    min-height: 100vh;*!*/
+/*!*}*!*/
+
+/*!*h1 {*!*/
+/*!*    color: #333;*!*/
+/*!*    margin: 0;*!*/
+/*!*    padding-top: 20px;*!*/
+/*!*    text-align: center;*!*/
+/*!*}*!*/
+
+/*!*#membersContainer, .selection-container {*!*/
+/*!*    width: 100%;*!*/
+/*!*    max-width: 600px;*!*/
+/*!*    display: flex;*!*/
+/*!*    flex-wrap: wrap;*!*/
+/*!*    justify-content: center;*!*/
+/*!*    gap: 10px;*!*/
+/*!*    margin: 20px auto;*!*/
+/*!*}*!*/
+
+
+/*!*!* Style for the label to position the tooltip *!*!*/
+/*!*label {*!*/
+/*!*    position: relative;*!*/
+/*!*    display: inline-block;*!*/
+/*!*    cursor: pointer;*!*/
+/*!*}*!*/
+
+/*!*!* Hidden tooltip text *!*!*/
+/*!*.tooltip-text {*!*/
+/*!*    visibility: hidden;*!*/
+/*!*    width: 200px;*!*/
+/*!*    background-color: red;*!*/
+/*!*    color: white;*!*/
+/*!*    text-align: center;*!*/
+/*!*    padding: 5px 0;*!*/
+/*!*    border-radius: 6px;*!*/
+
+/*!*    !* Positioning *!*!*/
+/*!*    position: absolute;*!*/
+/*!*    z-index: 1;*!*/
+/*!*    bottom: 125%;*!*/
+/*!*    left: 50%;*!*/
+/*!*    transform: translateX(-50%);*!*/
+
+/*!*    ::after {*!*/
+/*!*        content: "";*!*/
+/*!*        position: absolute;*!*/
+/*!*        top: 100%;*!*/
+/*!*        left: 50%;*!*/
+/*!*        margin-left: -5px;*!*/
+/*!*        border-width: 5px;*!*/
+/*!*        border-style: solid;*!*/
+/*!*        border-color: red transparent transparent transparent;*!*/
+/*!*    }*!*/
+/*!*}*!*/
+
+
+/*!*label:hover .tooltip-text {*!*/
+/*!*    visibility: visible;*!*/
+/*!*}*!*/
+
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    margin: 0;*/
+/*    padding: 20px;*/
+/*    box-sizing: border-box;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+/*h1 {*/
+/*    color: #333;*/
+/*    margin: 0;*/
+/*    padding-top: 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*#membersContainer, .selection-container {*/
+/*    width: 100%;*/
+/*    max-width: 600px;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: center;*/
+/*    gap: 10px;*/
+/*    margin: 20px auto;*/
+/*}*/
+
+/*!* Style adjustments for label to maintain hover functionality *!*/
+/*label {*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    cursor: pointer;*/
+/*    flex-direction: column; !* Adjusted for better alignment *!*/
+/*    align-items: center; !* Centered content *!*/
+/*    gap: 5px; !* Added gap between checkbox/text and tooltip *!*/
+/*}*/
+
+/*!* Adjustments to tooltip visibility and styling *!*/
+/*.tooltip-text {*/
+/*    visibility: hidden;*/
+/*    width: 200px;*/
+/*    background-color: red;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    padding: 5px 0;*/
+/*    border-radius: 6px;*/
+/*    position: absolute;*/
+/*    z-index: 1;*/
+/*    bottom: 100%;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    margin-bottom: 10px; !* Ensure there's enough space between tooltip and label *!*/
+/*}*/
+
+/*.tooltip-text::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 50%;*/
+/*    margin-left: -5px;*/
+/*    border-width: 5px;*/
+/*    border-style: solid;*/
+/*    border-color: red transparent transparent transparent;*/
+/*}*/
+
+/*label:hover .tooltip-text {*/
+/*    visibility: visible;*/
+/*}*/
+
+/*input[type="checkbox"], input[type="radio"] {*/
+/*    cursor: pointer; !* Ensure the cursor changes to pointer on hover over checkboxes and radio buttons *!*/
+/*}*/
+
+/*!* Ensure that labels for radio buttons are inline for a matrix-like layout *!*/
+/*.selection-container label {*/
+/*    flex-direction: row; !* Labels in selection-container are horizontal *!*/
+/*    justify-content: center; !* Center label content horizontally *!*/
+/*}*/
+
+/*!* Adjustments for spacing and alignment *!*/
+/*.selection-container input[type="radio"] {*/
+/*    margin-right: 5px; !* Space between radio button and its label *!*/
+/*}*/
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Changed to 'flex-start' to align content to the top */
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Light background to give a fresh look */
 }
 
 h1 {
     color: #333;
+    margin-bottom: 30px; /* Add some space below the heading */
+    padding-top: 20px;
+    text-align: center;
 }
 
-#membersContainer {
-    margin-top: 20px;
+.selection-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Wrap items to form a matrix */
+    margin: 20px auto;
 }
 
-/* Style for the label to position the tooltip */
-label {
-    position: relative;
-    display: inline-block;
-    cursor: pointer; /* Optional: indicates hoverable */
+#membersContainer label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
 }
 
-/* Hidden tooltip text */
 .tooltip-text {
     visibility: hidden;
     width: 200px;
@@ -27,29 +199,68 @@ label {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-
-    /* Positioning */
     position: absolute;
-    z-index: 1;
-    bottom: 125%;
+    z-index: 2;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-
-    /* Optional: Adds a little arrow at the top of the tooltip */
-    ::after {
-        content: "";
-        position: absolute;
-        top: 100%; /* At the bottom of the tooltip */
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: red transparent transparent transparent;
-    }
+    margin-bottom: 10px;
 }
 
-/* Show the tooltip text when hovering over the label */
-label:hover .tooltip-text {
+label:hover > .tooltip-text {
     visibility: visible;
 }
 
+/* Ensure this doesn't interfere with tooltip */
+label input[type="checkbox"], label input[type="radio"] {
+    margin: 0;
+    position: relative;
+    z-index: 1; /* Make sure the inputs are under the tooltip */
+}
+
+input[type="checkbox"], input[type="radio"] {
+    cursor: pointer;
+    margin-right: 10px; /* Space out the checkbox/radio from the label */
+}
+
+button#proceedButton {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px; /* Larger font size for better readability */
+    transition: background-color 0.3s ease; /* Transition for a hover effect */
+}
+
+button#proceedButton:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+}
+
+#nsfSupportContainer {
+    text-align: center; /* Center-aligns the content */
+    margin-top: 40px; /* Adds some space above the container */
+}
+
+#nsfSupportContainer p {
+    font-size: 18px; /* Large font size for visibility */
+    color: #333;
+    margin-top: 10px; /* Space between the image and text */
+}
+
+#nsfSupportImage {
+    max-width: 50%; /* Size the image to be half of its container */
+    height: auto; /* Keep aspect ratio */
+    margin-bottom: 10px; /* Add space below the image */
+}
+
+label {
+    position: relative;
+    display: flex;
+
+    align-items: center;
+    cursor: pointer;
+    margin: 10px; /* Give some space around each label */
+}

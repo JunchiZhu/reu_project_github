@@ -47,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
             checkbox.name = 'members';
             checkbox.value = member["Team Members"];
 
+            if (member["Team Members"] === "Project Manager(You)") {
+                checkbox.checked = true;
+                checkbox.disabled = true;
+            }
+
             const tooltipSpan = document.createElement('span');
             tooltipSpan.className = 'tooltip-text';
             tooltipSpan.textContent = descriptions[member["Team Members"]] || "No description available.";
@@ -74,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        if (selectedMembers.length === 0) {
+        if (selectedMembers.length === 1) {
             warningContainer.style.display = 'block';
-            warningContainer.textContent = 'Please select at least one member!';
+            warningContainer.textContent = 'Please select at least one more member!';
             return;
         }
 

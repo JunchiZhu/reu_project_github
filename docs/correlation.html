@@ -7,21 +7,56 @@
     <link rel="stylesheet" href="css/correlation.css">
 </head>
 <body>
-<h1>Correlation Table</h1>
+<h1>Table</h1>
 <table id="correlationTable"></table>
+
 
 <h2>Quiz</h2>
 <form id="quizForm">
+
     <label>Name: <input type="text" name="name" required></label><br>
     <label>Email: <input type="email" name="email" required></label><br>
-    <p>Question 1: <input type="text" name="question1" required></p>
-    <p>Question 2: <input type="text" name="question2" required></p>
-    <button type="submit" onclick="SubForm">Submit Answers</button>
+
+    <p>The number in the table denotes the frequency of communication between the two stakeholders across the column and row. Please read the table and answer the following questions: </p>
+    <p>Who is the central stakeholder in the project communication?</p>
+    <label for="table_question1"></label><select name="table_question1" id="table_question1" required>
+        <option value="">Please select</option>
+    </select><br>
+
+    <p>If the project manager sends out a message, who will be the first to receive it?</p>
+    <label for="table_question2"></label><select name="table_question2" id="table_question2" required>
+        <option value="">Please select</option>
+    </select><br>
+
+    <p>If the project manager sends out a message, who will be the latest to receive it?</p>
+    <label for="table_question3"></label><select name="table_question3" id="table_question3" required>
+        <option value="">Please select</option>
+    </select><br>
+
+    <p>Who is most closely communicating with the project manager?</p>
+    <label for="table_question4"></label><select name="table_question4" id="table_question4" required>
+        <option value="">Please select</option>
+    </select><br>
+
+    <p>Who is least closely communicating with the project manager?</p>
+    <label for="table_question5"></label><select name="table_question5" id="table_question5" required>
+        <option value="">Please select</option>
+    </select><br>
+
+    <p>How confidently do you understand the project team structure?</p>
+    <label for="table_question6"></label><select name="table_question6" id="table_question6" required>
+        <option value="">Please select</option>
+        <option value="veryConfidently">Very confidently</option>
+        <option value="somehowConfidently">Somehow confidently</option>
+        <option value="neutral">Neutral</option>
+        <option value="somehowNotConfidently">Somehow not confidently</option>
+        <option value="veryNotConfidently">Very not confidently</option>
+    </select><br>
+
+    <button type="submit" id="table_quiz_button">Submit Answers And Go to Graph Page</button>
 </form>
-<div id="quizWarning" style="color: red; display: none;"></div>
 
 <button id="goBackButton">Go Back to Selection</button>
-<button id="goToGraphPageButton">Go to Graph Page</button>
 
 <script src="js/correlation.js"></script>
 <script
@@ -29,20 +64,30 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
 <script>
-    function SubForm(event){
-        event.preventDefault();
+
+    function SubForm() {
+        const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers')) || [];
+        const selectedMembersString = selectedMembers.join(", ");
+
+        // Serialize form data and add the selected_members data
+        var formData = $("#quizForm").serializeArray();
+        formData.push({ name: 'selected_members', value: selectedMembersString });
+
         $.ajax({
-            url:"https://api.apispreadsheets.com/data/vUbbx1vPXTx2rF5w/",
-            type:"post",
-            data:$("#quizForm").serializeArray(),
-            success: function(){
+            url:"https://api.apispreadsheets.com/data/JPe41RBXjnIShTXZ/",
+            type: "post",
+            data: formData,
+            success: function() {
                 alert("Form Data Submitted :)");
+                window.location.href = 'node_graph.html';
             },
-            error: function(){
+            error: function() {
                 alert("There was an error :(");
             }
         });
     }
+
+
 </script>
 </body>
 </html>

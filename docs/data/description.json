@@ -1,5 +1,9 @@
 [
   {
+    "Team Members": "Project Manager(You)",
+    "Brief Description": "As the Project Manager, your job is to guide the team, manage the timeline, and keep the project on budget. You make plans, solve problems, and make sure everything gets done on time. "
+  },
+  {
     "Team Members": "Architect",
     "Brief Description": "Responsible for the building designs, drafts project blueprints, and answers requests for information for contractors. Works with Project Manager and Owner."
   },
@@ -24,7 +28,7 @@
     "Brief Description": "Responsible for day-to-day construction operations. Supervises the general trades and insures that the project is running safely."
   },
   {
-    "Team Members": "Project Engineer",
+    "Team Members": "Engineer",
     "Brief Description": "Responsible for project administration. Oversees submittals, change orders, and requests for information. Works with Project Manager and Site Supervisor."
   },
   {

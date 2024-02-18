@@ -9,23 +9,25 @@
 </head>
 <body>
 <h1>Select a Level</h1>
-<div>
+
+<div class="selection-container">
     <input type="radio" id="level1" name="level" value="level1">
     <label for="level1">Level 1</label>
-</div>
-<div>
+
     <input type="radio" id="level2" name="level" value="level2">
     <label for="level2">Level 2</label>
 </div>
-<div>
-    <input type="radio" id="level3" name="level" value="level3">
-    <label for="level3">Level 3</label>
-</div>
 
-<div id="membersContainer"></div>
+<div class="selection-container" id="membersContainer"></div>
 
 <div id="warning" style="color: red; display: none;">Please select a level!</div>
 <button id="proceedButton">Proceed to Table Page</button>
+
+<div id="nsfSupportContainer">
+    <img src="data/img.png" alt="Thank You for NSF Support" id="nsfSupportImage"/>
+    <p>Thank you for NSF support!</p>
+</div>
+
 
 <script src="js/index.js"></script>
 </body>

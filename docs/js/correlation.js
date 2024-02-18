@@ -1,35 +1,92 @@
 document.addEventListener('DOMContentLoaded', function() {
     const selectedLevel = localStorage.getItem('selectedLevel');
     const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
-    console.log(selectedLevel)
-    console.log(selectedMembers)
-    if (!selectedLevel || !selectedMembers || selectedMembers.length === 0) {
-        alert('No selection made or selection was cleared.');
-        window.location.href = 'index.html';
-        return;
-    }
+    const selectedMembers_without_pm = selectedMembers.filter(member => member !== "Project Manager(You)");
 
     fetch(`data/${selectedLevel}.json`)
         .then(response => response.json())
         .then(data => createCorrelationTable(data, selectedMembers))
         .catch(error => console.error("Error loading the data:", error));
 
-    document.getElementById('quizForm').addEventListener('submit', SubForm);
+
+    const table_question1_select = document.getElementById('table_question1');
+    let option = document.createElement('option');
+
+    selectedMembers.forEach(member => {
+        option = document.createElement('option');
+        option.value = member;
+        option.textContent = member;
+        table_question1_select.appendChild(option);
+    });
+
+
+    const otherSelectIds = ['table_question2', 'table_question3', 'table_question4', 'table_question5'];
+    otherSelectIds.forEach(selectId => {
+        const select = document.getElementById(selectId);
+        selectedMembers_without_pm.forEach(member => {
+            option = document.createElement('option');
+            option.value = member;
+            option.textContent = member;
+            select.appendChild(option);
+        });
+    });
+
+    var subButton = document.getElementById('table_quiz_button');
+    subButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+
+        var allFieldsFilled = true;
+
+        // Check if the name and email inputs are filled
+        var nameInput = document.querySelector('#quizForm input[name="name"]');
+        var emailInput = document.querySelector('#quizForm input[name="email"]');
+
+        if (!nameInput.value.trim()) {
+            allFieldsFilled = false;
+            nameInput.style.borderColor = 'red';
+        } else {
+            nameInput.style.borderColor = '';
+        }
+
+        if (!emailInput.value.trim()) {
+            allFieldsFilled = false;
+            emailInput.style.borderColor = 'red';
+        } else {
+            emailInput.style.borderColor = '';
+        }
+
+        // Check if all select elements are filled
+        document.querySelectorAll('#quizForm select[required]').forEach(function(select) {
+            if (select.value === "") {
+                allFieldsFilled = false;
+                select.style.borderColor = 'red';
+            } else {
+                select.style.borderColor = '';
+            }
+        });
+
+        // If all fields are filled, proceed with form submission
+        if (allFieldsFilled) {
+            SubForm();
+        } else {
+            alert('Please fill out all required fields before proceeding.');
+        }
+    });
+
     document.getElementById('goBackButton').addEventListener('click', handleGoBack);
-    document.getElementById('goToGraphPageButton').addEventListener('click', handleGoToGraphPage);
+
 });
+
 
 function createCorrelationTable(data, selectedMembers) {
     const table = document.getElementById('correlationTable');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
 
-    // Create the header row
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = '<th>Team Members</th>' + selectedMembers.map(member => `<th>${member}</th>`).join('');
     thead.appendChild(headerRow);
 
-    // Create the body rows
     selectedMembers.forEach(memberName => {
         const memberData = data.find(member => member["Team Members"] === memberName);
         const row = document.createElement('tr');
@@ -44,37 +101,10 @@ function createCorrelationTable(data, selectedMembers) {
     table.appendChild(tbody);
 }
 
-function handleQuizSubmit(event) {
-    event.preventDefault();
-    const quizForm = event.target;
-    const name = quizForm.querySelector('input[name="name"]').value;
-    const email = quizForm.querySelector('input[name="email"]').value;
-    const answers = {
-        question1: quizForm.querySelector('input[name="question1"]').value,
-        question2: quizForm.querySelector('input[name="question2"]').value,
-    };
-
-    if (!name || !email) {
-        document.getElementById('quizWarning').textContent = 'Please provide your name and email.';
-        document.getElementById('quizWarning').style.display = 'block';
-        return;
-    }
-
-    if (Object.values(answers).some(answer => answer.trim() === '')) {
-        document.getElementById('quizWarning').textContent = 'Please answer all questions.';
-        document.getElementById('quizWarning').style.display = 'block';
-        return;
-    }
-
-    console.log('Submit to spreadsheet', { name, email, ...answers }); // Placeholder for API submission
-    alert('Quiz submitted! Thank you.');
-}
 
 function handleGoBack() {
     localStorage.clear();
     window.location.href = 'index.html';
 }
 
-function handleGoToGraphPage() {
-    window.location.href = 'node_graph.html';
-}
+

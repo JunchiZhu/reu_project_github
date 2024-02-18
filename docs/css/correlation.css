@@ -1,0 +1,27 @@
+#correlationTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: Arial, sans-serif;
+}
+
+#correlationTable thead th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+
+#correlationTable tbody td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#correlationTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#correlationTable tbody tr:hover {
+    background-color: #ddd;
+}

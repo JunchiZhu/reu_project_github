@@ -1,6 +1,6 @@
 #nodeGraph {
     width: 100%;
-    height: 600px;
-    border: 1px solid #333;
+    height: 600px; /* or any other fixed height */
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
-

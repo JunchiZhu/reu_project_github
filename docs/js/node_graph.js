@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
     console.log(selectedLevel)
     console.log(selectedMembers)
-    // Fetch the data for the selected level and create the graph
+
     fetch(`data/${selectedLevel}.json`)
         .then(response => response.json())
         .then(data => {
@@ -13,29 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function createNodeGraph(data, selectedMembers) {
-    const width = 960, height = 600;
+    const width = window.innerWidth;
+    const height = 600;
+
 
     const svg = d3.select('#nodeGraph').append('svg')
         .attr('width', width)
         .attr('height', height);
 
+
     const nodes = selectedMembers.map(member => ({ id: member }));
     const links = [];
 
-    const projectManager = 'Project Manager(You)'; // Assume the project manager has a specific key
-
-    // selectedMembers.forEach(member => {
-    //     if (member !== projectManager) {
-    //         const sourceData = data.find(d => d['Team Members'] === projectManager);
-    //         const value = sourceData[member];
-    //         if (value && value !== 0) { // Ensure there is a connection and it's not to self
-    //             links.push({ source: projectManager, target: member, value });
-    //         }
-    //     }
-    // });
     selectedMembers.forEach((source, i) => {
         selectedMembers.slice(i + 1).forEach(target => {
-            // Only create an edge if source is less than target to avoid duplicates
             const sourceData = data.find(d => d['Team Members'] === source);
             const value = sourceData[target];
             if (value) {
@@ -46,9 +37,10 @@ function createNodeGraph(data, selectedMembers) {
 
 
     const simulation = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).id(d => d.id).distance(200))
-        .force('charge', d3.forceManyBody().strength(-500))
+        .force('link', d3.forceLink(links).id(d => d.id).distance(300)) // Shorter distance
+        .force('charge', d3.forceManyBody().strength(-200)) // Less repulsive force
         .force('center', d3.forceCenter(width / 2, height / 2));
+
 
     const link = svg.append('g')
         .selectAll('line')
@@ -63,13 +55,13 @@ function createNodeGraph(data, selectedMembers) {
         .join('text')
         .text(d => d.value)
         .style('fill', '#555')
-        .style('font-size', '10px');
+        .style('font-size', '20px');
 
     const node = svg.append('g')
         .selectAll('circle')
         .data(nodes)
         .join('circle')
-        .attr('r', 20)
+        .attr('r', 35)
         .style('fill', '#69b3a2')
         .call(drag(simulation));
     function drag(simulation) {
@@ -125,13 +117,82 @@ function createNodeGraph(data, selectedMembers) {
             .attr('x', d => (d.source.x + d.target.x) / 2)
             .attr('y', d => (d.source.y + d.target.y) / 2);
     });
+
+
+    const graph_question1_select = document.getElementById('graph_question1');
+    let option = document.createElement('option');
+
+    selectedMembers.forEach(member => {
+        option = document.createElement('option');
+        option.value = member;
+        option.textContent = member;
+        graph_question1_select.appendChild(option);
+    });
+
+    const selectedMembers_without_pm = selectedMembers.filter(member => member !== "Project Manager(You)");
+
+    const otherSelectIds = ['graph_question2', 'graph_question3', 'graph_question4', 'graph_question5'];
+    otherSelectIds.forEach(selectId => {
+        const select = document.getElementById(selectId);
+        selectedMembers_without_pm.forEach(member => {
+            option = document.createElement('option');
+            option.value = member;
+            option.textContent = member;
+            select.appendChild(option);
+        });
+    });
+
+    var subButton = document.getElementById('graph_quiz_button');
+    subButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var allFieldsFilled = true;
+
+        var nameInput = document.querySelector('#graph_quizForm input[name="name"]');
+        var emailInput = document.querySelector('#graph_quizForm input[name="email"]');
+
+        if (!nameInput.value.trim()) {
+            allFieldsFilled = false;
+            nameInput.style.borderColor = 'red';
+        } else {
+            nameInput.style.borderColor = '';
+        }
+
+        if (!emailInput.value.trim()) {
+            allFieldsFilled = false;
+            emailInput.style.borderColor = 'red';
+        } else {
+            emailInput.style.borderColor = '';
+        }
+
+        document.querySelectorAll('#graph_quizForm select[required]').forEach(function(select) {
+            if (select.value === "") {
+                allFieldsFilled = false;
+                select.style.borderColor = 'red';
+            } else {
+                select.style.borderColor = '';
+            }
+        });
+
+        if (allFieldsFilled) {
+            SubForm();
+        } else {
+            alert('Please fill out all required fields before proceeding.');
+        }
+    });
 }
 
+// Add this inside your script tag
+window.addEventListener('resize', resize);
 
+function resize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
+    svg.attr('width', width)
+        .attr('height', height);
 
-function GoBackHome() {
-    localStorage.clear();
-    window.location.href = 'index.html';
+    simulation.force('center', d3.forceCenter(width / 2, height / 2))
+        .restart();
 }
-document.getElementById('goBackHome').addEventListener('click', GoBackHome);
+
